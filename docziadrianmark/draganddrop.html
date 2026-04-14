@@ -1,0 +1,533 @@
+<!doctype html>
+
+<html lang="hu">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Scrum Board</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "surface-container-lowest": "#ffffff",
+                            outline: "#767b7f",
+                            "on-surface": "#2d3337",
+                            background: "#f8f9fb",
+                            secondary: "#4f607c",
+                            "error-container": "#fa746f",
+                            error: "#a83836",
+                            "on-error-container": "#6e0a12",
+                            "tertiary-fixed-dim": "#dabfef",
+                            "surface-variant": "#dee3e7",
+                            "surface-container-high": "#e4e9ec",
+                            "on-secondary": "#f8f8ff",
+                            "tertiary-container": "#e8cdfd",
+                            "secondary-container": "#d6e3ff",
+                            "inverse-on-surface": "#9b9d9f",
+                            "surface-tint": "#0f57d0",
+                            "on-tertiary-fixed-variant": "#614c74",
+                            "on-tertiary": "#fff6ff",
+                            "on-background": "#2d3337",
+                            "on-tertiary-container": "#57426a",
+                            "on-primary": "#f9f8ff",
+                            "primary-fixed": "#4e83fe",
+                            "on-primary-container": "#000000",
+                            "surface-container-highest": "#dee3e7",
+                            "inverse-primary": "#5c8bff",
+                            primary: "#0f57d0",
+                            "secondary-fixed-dim": "#c4d5f7",
+                            "surface-bright": "#f8f9fb",
+                            "surface-dim": "#d5dbdf",
+                            "on-error": "#fff7f6",
+                            "primary-container": "#4e83fe",
+                            "primary-fixed-dim": "#3f75f0",
+                            "outline-variant": "#adb3b7",
+                            "error-dim": "#67040d",
+                            "on-secondary-container": "#42526e",
+                            "on-secondary-fixed": "#30405b",
+                            "inverse-surface": "#0c0f10",
+                            surface: "#f8f9fb",
+                            "secondary-fixed": "#d6e3ff",
+                            "on-secondary-fixed-variant": "#4c5c78",
+                            tertiary: "#6c567f",
+                            "primary-dim": "#004bbc",
+                            "on-tertiary-fixed": "#433056",
+                            "on-primary-fixed-variant": "#000e32",
+                            "secondary-dim": "#445470",
+                            "on-surface-variant": "#5a6064",
+                            "tertiary-fixed": "#e8cdfd",
+                            "on-primary-fixed": "#000000",
+                            "surface-container-low": "#f1f4f7",
+                            "tertiary-dim": "#5f4b73",
+                            "surface-container": "#ebeef1",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans"],
+                            body: ["Inter"],
+                            label: ["Inter"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                background-color: #f8f9fb;
+                color: #2d3337;
+            }
+            h1,
+            h2,
+            h3,
+            .font-headline {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body class="bg-surface text-on-surface">
+        <!-- TopNavBar Shared Component -->
+        <header
+            class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-xl shadow-sm"
+        >
+            <nav
+                class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4"
+            >
+                <div class="flex items-center gap-8">
+                    <span
+                        class="text-xl font-bold tracking-tight text-slate-900"
+                        >Weboldal</span
+                    >
+                    <div class="hidden md:flex gap-6 items-center">
+                        <a
+                            class="font-headline text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                            href="#"
+                            >Funkciók</a
+                        >
+                        <a
+                            class="font-headline text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                            href="#"
+                            >Vélemények</a
+                        >
+                        <a
+                            class="font-headline text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                            href="#"
+                            >Árazás</a
+                        >
+                        <a
+                            class="font-headline text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                            href="#"
+                            >Rólunk</a
+                        >
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="font-headline text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+                    >
+                        Bejelentkezés
+                    </button>
+                    <button
+                        class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2.5 rounded-xl font-headline text-sm font-semibold shadow-sm hover:opacity-90 transition-all scale-95 active:scale-90"
+                    >
+                        Kezdje el ingyen
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <main class="pt-24 pb-12 px-6 max-w-7xl mx-auto">
+            <!-- Project Header -->
+            <div class="mb-10">
+                <div
+                    class="flex items-center gap-2 text-on-surface-variant text-sm mb-2"
+                >
+                    <span class="font-medium">Projektek</span>
+                    <span class="material-symbols-outlined text-sm"
+                        >chevron_right</span
+                    >
+                    <span class="font-medium">Weboldal</span>
+                </div>
+                <div class="flex justify-between items-end">
+                    <div>
+                        <h1
+                            class="text-4xl font-extrabold tracking-tight text-on-surface mb-2"
+                        >
+                            Elso project
+                        </h1>
+                        <p class="text-on-surface-variant max-w-2xl">
+                            A csapat sprint feladatainak áttekintése és kezelése
+                            a hatékonyabb munkavégzés érdekében.
+                        </p>
+                    </div>
+                    <div class="flex -space-x-3">
+                        <img
+                            alt="User 1"
+                            class="w-10 h-10 rounded-full border-2 border-surface shadow-sm"
+                            data-alt="professional portrait of a creative director woman with soft studio lighting and neutral background"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvus_Vi-IM_mhFbgtgiGia9hW8u5N_TArSODi3pu0ozB3wkgs_F6OONNU_3rYv5qRCgM47yo0ZE3pRTrjU51B3JA7xgYvpRYzZDdDbcGPZrQ-nmTGdSAjxtUHkYD_tWkgi1_CazthsSWGs-iMzQk-JGjapN1QVAWFFK1BN_SSapQISSOQqU6-iCTPyj4oEOOdHO66BUS1esWZ7q_ivPzAi5b02-ACXL6zY3IJbNO8kWAiy7qI8zhdEX-HAo6Uk7Ckc7EM_vxg2GDg"
+                        />
+                        <img
+                            alt="User 2"
+                            class="w-10 h-10 rounded-full border-2 border-surface shadow-sm"
+                            data-alt="headshot of a young male software developer smiling in a bright office environment"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6l5yB2UmCwGKUerVOhRvWXkUNZD6g-y7oUeCDMWfI1dP4euAXAR-VaOi9unyhurTGIUhQ-zzkUNVSxnJwomkZcmC7dG6Fks6FAIPwYQhvzkNqMW6r3AImGJX2Oe2sPqAs5bI-doMk5diJBbzw8ktJ40kYPjo-7oJRZsn_wTU-eP6QGtRgDGBolX18R8ShBcaFfZ7H1LSFDPatMhFnYfEQMD2qrQINo0Quk_uDhIV8ZOKbIyk1euaEEkfR3kbYRspQ5MB9AjuF4u4"
+                        />
+                        <img
+                            alt="User 3"
+                            class="w-10 h-10 rounded-full border-2 border-surface shadow-sm"
+                            data-alt="portrait of a focused project manager woman in a modern architectural space"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZulSzrV2Ss2tf6068H4M-QFWe8puTXzTt2zR4R2bLfcXja06j0vptEve5bj40Gfv9YXgOETalnkTscjTjJzw5MMb-f8XN1-ZUQK7GhXwcO_AxDIwq3KMPoEI_1QS1oJ6FHq7pypd1MbN184H18tudx3sV_kpyqnJQPv91nl2_sJG2Hocbsf6xCkT-ScSiw_xGNw-0zSIgs2XAHB7KXb990cugDZXU5rcwg_L35QhAdj0NfdMCwCNi--FX3agMGqsZbyvFtx009tY"
+                        />
+                        <div
+                            class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-xs font-bold text-on-surface-variant shadow-sm"
+                        >
+                            +5
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scrum Board Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Column: Folyamatban -->
+                <div
+                    class="bg-surface-container rounded-xl p-4 min-h-[600px] flex flex-col"
+                >
+                    <div class="flex items-center justify-between mb-4 px-2">
+                        <div class="flex items-center gap-2">
+                            <h2
+                                class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant"
+                            >
+                                Folyamatban
+                            </h2>
+                            <span
+                                class="bg-secondary-container text-on-secondary-container px-2.5 py-0.5 rounded-full text-xs font-bold"
+                                >3</span
+                            >
+                        </div>
+                        <button
+                            class="text-on-surface-variant hover:bg-surface-container-high p-1 rounded-lg transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >more_horiz</span
+                            >
+                        </button>
+                    </div>
+                    <div class="flex-grow space-y-4">
+                        <!-- Task Card 1 -->
+                        <div
+                            class="bg-surface-container-lowest p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                        >
+                            <div class="flex justify-between items-start mb-3">
+                                <span
+                                    class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full text-[10px] font-bold uppercase"
+                                    >UI Design</span
+                                >
+                                <span
+                                    class="material-symbols-outlined text-primary text-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                                    >open_in_new</span
+                                >
+                            </div>
+                            <h3
+                                class="font-headline font-bold text-on-surface mb-2 leading-snug"
+                            >
+                                Landing page vázlatok készítése
+                            </h3>
+                            <p
+                                class="text-on-surface-variant text-sm mb-4 line-clamp-2"
+                            >
+                                Az új brand irányelvek alapján készítsünk 3
+                                különböző változatot a főoldalra.
+                            </p>
+                            <div
+                                class="flex justify-between items-center pt-4 border-t border-surface-container"
+                            >
+                                <div
+                                    class="flex items-center gap-1.5 text-on-surface-variant"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-base"
+                                        >chat_bubble</span
+                                    >
+                                    <span class="text-xs font-medium">4</span>
+                                </div>
+                                <img
+                                    alt="Assignee"
+                                    class="w-6 h-6 rounded-full"
+                                    data-alt="professional portrait of a creative director woman with soft studio lighting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB-iob1UeIUPWis2UDpadeton-qd_tJJQibEaIrhRtcgme8UCS5N1vPLRneZkRsW4aRPqLIlkMWqo6IiotcwWCPsLtwYwGPU_4lO-SVToQOUPOamx0Y-7IQJthQPJYNzNOcCXihRD5NzlwS9lz5ENZ29tdFPcAWaxK1H1_J3bKdo-XuBweX2y54z73VbZTTRU-mhLJaR-V9ThX0Olh1OR93gu7ArW72OPNB7v5J25B1p3M9mAUapNfzDQ0tl85gekzUcImbZarFBU"
+                                />
+                            </div>
+                        </div>
+                        <!-- Task Card 2 -->
+                        <div
+                            class="bg-surface-container-lowest p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                        >
+                            <div class="flex justify-between items-start mb-3">
+                                <span
+                                    class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full text-[10px] font-bold uppercase"
+                                    >Fejlesztés</span
+                                >
+                            </div>
+                            <h3
+                                class="font-headline font-bold text-on-surface mb-2 leading-snug"
+                            >
+                                API integráció a dashboardhoz
+                            </h3>
+                            <p class="text-on-surface-variant text-sm mb-4">
+                                A backend endpointok bekötése a frontend
+                                komponensekbe.
+                            </p>
+                            <div
+                                class="flex justify-between items-center pt-4 border-t border-surface-container"
+                            >
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="flex items-center gap-1 text-error"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-base"
+                                            >priority_high</span
+                                        >
+                                        <span class="text-xs font-bold"
+                                            >Magas</span
+                                        >
+                                    </div>
+                                </div>
+                                <img
+                                    alt="Assignee"
+                                    class="w-6 h-6 rounded-full"
+                                    data-alt="headshot of a young male software developer"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Phjp3dZkMFp1kK1VDl29HONvVNsuEW2VxjYSogOYXu90ktoIQUh3ZhPPKRhOR7JuLAUaB49hyiIBijuKmN1YHqz5yIqjAdZyZQMdrvesCKsrkPcNgtJF2wQGIjQw8XssS8lV-OLW_Sh-Pu5m5B1igTBDg4DxvjANaiZZ0P2tyzHV5VUR_L99lIIZE9mKiKM13scAOD3o5tn2YlaoKOqQ5zu4TRgKKJhzMPW9qlkxkgKJLfKd1dohyxdJD1G0XUEfmhRxp_1hc1U"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="mt-4 w-full flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-dashed border-outline-variant/30 text-on-surface-variant font-headline text-sm font-semibold hover:bg-surface-container-lowest hover:border-primary/40 hover:text-primary transition-all"
+                    >
+                        <span class="material-symbols-outlined text-xl"
+                            >add</span
+                        >
+                        <span>Új feladat</span>
+                    </button>
+                </div>
+                <!-- Column: Kész -->
+                <div
+                    class="bg-surface-container rounded-xl p-4 min-h-[600px] flex flex-col"
+                >
+                    <div class="flex items-center justify-between mb-4 px-2">
+                        <div class="flex items-center gap-2">
+                            <h2
+                                class="font-headline text-sm font-bold uppercase tracking-wider text-on-surface-variant"
+                            >
+                                Kész
+                            </h2>
+                            <span
+                                class="bg-secondary-container text-on-secondary-container px-2.5 py-0.5 rounded-full text-xs font-bold"
+                                >1</span
+                            >
+                        </div>
+                        <button
+                            class="text-on-surface-variant hover:bg-surface-container-high p-1 rounded-lg transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >more_horiz</span
+                            >
+                        </button>
+                    </div>
+                    <div class="flex-grow space-y-4">
+                        <!-- Task Card 3 (Completed) -->
+                        <div
+                            class="bg-surface-container-lowest p-5 rounded-xl shadow-sm opacity-75 grayscale-[0.2]"
+                        >
+                            <div class="flex justify-between items-start mb-3">
+                                <span
+                                    class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold uppercase"
+                                    >Kutatás</span
+                                >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl"
+                                    style="
+                                        font-variation-settings: &quot;FILL&quot;
+                                            1;
+                                    "
+                                    >check_circle</span
+                                >
+                            </div>
+                            <h3
+                                class="font-headline font-bold text-on-surface mb-2 leading-snug line-through decoration-on-surface-variant"
+                            >
+                                Konkurencia elemzés
+                            </h3>
+                            <p class="text-on-surface-variant text-sm mb-4">
+                                A top 5 projektmenedzsment eszköz funkcióinak
+                                összehasonlítása.
+                            </p>
+                            <div
+                                class="flex justify-between items-center pt-4 border-t border-surface-container"
+                            >
+                                <div
+                                    class="flex items-center gap-1.5 text-on-surface-variant"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-base"
+                                        >attach_file</span
+                                    >
+                                    <span class="text-xs font-medium"
+                                        >2 dokumentum</span
+                                    >
+                                </div>
+                                <img
+                                    alt="Assignee"
+                                    class="w-6 h-6 rounded-full"
+                                    data-alt="portrait of a focused project manager woman"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2E6xWIkFaeo-He-p2P926Yk85rwVlSbfYW9RmMPicllfL4SZNOg1cRdHCecM34meAPrpBA-wzU9ZBx4Nq7lc39hOgZsDaEsFPP1pjYSN0R7SAKe6u2IOYGgEGE1TPGTFRLnIcmTwlk12MTgI-SBQCc8us8bgQXWzX5rOpTWaKWAkGMjaA19d-HlpmNkHS7H84ph_eVeB7oogYgIoVAWCODko9VHc4NH5_Fo021Iquci_IdgOfJ6uoIt4FDyMNvq8dmqgsNzU4-ts"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="mt-4 w-full flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-dashed border-outline-variant/30 text-on-surface-variant font-headline text-sm font-semibold hover:bg-surface-container-lowest hover:border-primary/40 hover:text-primary transition-all"
+                    >
+                        <span class="material-symbols-outlined text-xl"
+                            >add</span
+                        >
+                        <span>Új feladat</span>
+                    </button>
+                </div>
+                <!-- Bento Grid Section / Empty Column for Layout -->
+                <div class="hidden lg:flex flex-col gap-8">
+                    <div class="bg-surface-container-low rounded-xl p-6">
+                        <h3
+                            class="font-headline font-bold text-on-surface mb-4"
+                        >
+                            Sprint statisztika
+                        </h3>
+                        <div class="space-y-4">
+                            <div
+                                class="flex justify-between items-center text-sm"
+                            >
+                                <span class="text-on-surface-variant"
+                                    >Befejezett feladatok</span
+                                >
+                                <span class="font-bold text-on-surface"
+                                    >64%</span
+                                >
+                            </div>
+                            <div
+                                class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"
+                            >
+                                <div class="bg-primary h-full w-[64%]"></div>
+                            </div>
+                            <div
+                                class="flex justify-between items-center text-sm pt-2"
+                            >
+                                <span class="text-on-surface-variant"
+                                    >Hátralévő idő</span
+                                >
+                                <span class="font-bold text-on-surface"
+                                    >4 nap</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-primary-container/10 border border-primary/10 rounded-xl p-6 relative overflow-hidden group"
+                    >
+                        <div class="relative z-10">
+                            <h3
+                                class="font-headline font-bold text-primary mb-2"
+                            >
+                                Weboldal AI
+                            </h3>
+                            <p
+                                class="text-primary-dim text-sm mb-4 leading-relaxed"
+                            >
+                                Úgy tűnik, a "Fejlesztés" oszlopban több feladat
+                                van, mint általában. Szeretnéd, ha
+                                átcsoportosítanánk erőforrásokat?
+                            </p>
+                            <button
+                                class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-primary-dim transition-colors"
+                            >
+                                Javaslat megtekintése
+                            </button>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-primary/10 text-8xl absolute -right-4 -bottom-4 rotate-12 group-hover:scale-110 transition-transform"
+                            >auto_awesome</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer Shared Component -->
+        <footer class="bg-slate-100 w-full py-12 px-6 mt-12">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto"
+            >
+                <div>
+                    <span
+                        class="text-lg font-black text-slate-800 tracking-tight"
+                        >Weboldal PM</span
+                    >
+                    <p
+                        class="mt-2 font-inter text-xs uppercase tracking-widest text-slate-500"
+                    >
+                        © 2024 Weboldal PM. Minden jog fenntartva.
+                    </p>
+                </div>
+                <div class="flex flex-wrap md:justify-end gap-6">
+                    <a
+                        class="font-inter text-xs uppercase tracking-widest text-slate-500 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all"
+                        href="#"
+                        >Adatvédelem</a
+                    >
+                    <a
+                        class="font-inter text-xs uppercase tracking-widest text-slate-500 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all"
+                        href="#"
+                        >Feltételek</a
+                    >
+                    <a
+                        class="font-inter text-xs uppercase tracking-widest text-slate-500 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all"
+                        href="#"
+                        >Kapcsolat</a
+                    >
+                    <a
+                        class="font-inter text-xs uppercase tracking-widest text-slate-500 hover:text-blue-500 hover:underline decoration-blue-500 underline-offset-4 transition-all"
+                        href="#"
+                        >Blog</a
+                    >
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

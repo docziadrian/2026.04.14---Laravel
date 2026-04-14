@@ -1,0 +1,638 @@
+<!doctype html>
+
+<html lang="hu">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script id="tailwind-config">
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            "inverse-primary": "#5c8bff",
+                            "tertiary-dim": "#5f4b73",
+                            "primary-dim": "#004bbc",
+                            "on-secondary-container": "#42526e",
+                            "on-secondary": "#f8f8ff",
+                            "tertiary-fixed-dim": "#dabfef",
+                            "secondary-dim": "#445470",
+                            primary: "#0f57d0",
+                            "on-tertiary-container": "#57426a",
+                            "on-primary-container": "#000000",
+                            outline: "#767b7f",
+                            "inverse-surface": "#0c0f10",
+                            "tertiary-fixed": "#e8cdfd",
+                            "inverse-on-surface": "#9b9d9f",
+                            "primary-fixed": "#4e83fe",
+                            "on-primary-fixed-variant": "#000e32",
+                            "outline-variant": "#adb3b7",
+                            "on-primary": "#f9f8ff",
+                            "primary-container": "#4e83fe",
+                            "surface-bright": "#f8f9fb",
+                            "error-container": "#fa746f",
+                            "on-tertiary-fixed": "#433056",
+                            "on-surface": "#2d3337",
+                            "on-primary-fixed": "#000000",
+                            "tertiary-container": "#e8cdfd",
+                            "surface-container-low": "#f1f4f7",
+                            "secondary-fixed-dim": "#c4d5f7",
+                            "on-error": "#fff7f6",
+                            "surface-container-highest": "#dee3e7",
+                            "surface-dim": "#d5dbdf",
+                            "on-tertiary-fixed-variant": "#614c74",
+                            "on-secondary-fixed-variant": "#4c5c78",
+                            "on-background": "#2d3337",
+                            "surface-tint": "#0f57d0",
+                            "error-dim": "#67040d",
+                            "secondary-container": "#d6e3ff",
+                            "surface-container-lowest": "#ffffff",
+                            tertiary: "#6c567f",
+                            "primary-fixed-dim": "#3f75f0",
+                            "surface-container-high": "#e4e9ec",
+                            "surface-container": "#ebeef1",
+                            "secondary-fixed": "#d6e3ff",
+                            background: "#f8f9fb",
+                            "on-surface-variant": "#5a6064",
+                            "surface-variant": "#dee3e7",
+                            "on-error-container": "#6e0a12",
+                            surface: "#f8f9fb",
+                            error: "#a83836",
+                            secondary: "#4f607c",
+                            "on-tertiary": "#fff6ff",
+                            "on-secondary-fixed": "#30405b",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            "2xl": "1.5rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans"],
+                            body: ["Inter"],
+                            label: ["Inter"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                background-color: #f8f9fb;
+                color: #2d3337;
+            }
+            .font-headline {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .glass-nav {
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+            }
+            .text-gradient {
+                background: linear-gradient(to right, #0f57d0, #4e83fe);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .btn-primary-gradient {
+                background: linear-gradient(to bottom right, #0f57d0, #4e83fe);
+            }
+        </style>
+    </head>
+    <body
+        class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container"
+    >
+        <!-- Top Navigation -->
+        <nav
+            class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-xl shadow-sm"
+        >
+            <div
+                class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4"
+            >
+                <div
+                    class="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2"
+                >
+                    <span
+                        class="material-symbols-outlined text-primary"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >weboldal</span
+                    >
+                    <span>Weboldal</span>
+                </div>
+                <!-- Desktop Links -->
+                <div
+                    class="hidden md:flex items-center gap-8 font-headline text-sm font-semibold"
+                >
+                    <a
+                        class="text-blue-700 font-bold border-b-2 border-blue-600 px-1 py-1"
+                        href="#features"
+                        >Funkciók</a
+                    >
+                    <a
+                        class="text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                        href="#reviews"
+                        >Vélemények</a
+                    >
+                    <a
+                        class="text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                        href="#pricing"
+                        >Árazás</a
+                    >
+                    <a
+                        class="text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                        href="#about"
+                        >Rólunk</a
+                    >
+                </div>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="hidden md:block font-headline text-sm font-semibold text-slate-600 hover:bg-slate-100/50 px-4 py-2 rounded-xl transition-all active:scale-95"
+                    >
+                        Bejelentkezés
+                    </button>
+                    <button
+                        class="btn-primary-gradient text-on-primary font-headline text-sm font-semibold px-6 py-3 rounded-2xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
+                    >
+                        Kezdje el ingyen
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <main class="pt-24">
+            <!-- Hero Section -->
+            <section class="px-6 py-16 md:py-28 overflow-hidden">
+                <div
+                    class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+                >
+                    <div class="lg:col-span-6 space-y-8">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-wider uppercase"
+                        >
+                            <span class="material-symbols-outlined text-[14px]"
+                                >auto_awesome</span
+                            >
+                            <span>Új korszak a projektkezelésben</span>
+                        </div>
+                        <h1
+                            class="font-headline text-5xl md:text-7xl font-extrabold tracking-tight text-on-surface leading-[1.1]"
+                        >
+                            Szervezze projektjeit
+                            <span class="text-gradient">könnyedén</span>
+                        </h1>
+                        <p
+                            class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed"
+                        >
+                            A weboldal segítségével átláthatóan és hatékonyabban
+                            dolgozhat. Felejtse el a káoszt, és kezelje
+                            könnyedén projektjeit.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button
+                                class="btn-primary-gradient text-on-primary font-headline text-lg font-bold px-8 py-4 rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl transition-all"
+                            >
+                                Kezdje el ingyen
+                            </button>
+                            <button
+                                class="flex items-center justify-center gap-2 font-headline text-lg font-bold px-8 py-4 text-primary border border-outline-variant/20 rounded-2xl hover:bg-surface-container-low transition-all"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >play_circle</span
+                                >
+                                Demó megtekintése
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-6 relative">
+                        <div
+                            class="relative z-10 rounded-2xl overflow-hidden shadow-2xl shadow-slate-900/10 border border-surface-container-highest bg-surface-container-lowest p-2 transform lg:rotate-2 lg:translate-x-8"
+                        >
+                            <img
+                                class="w-full h-auto rounded-xl"
+                                data-alt="Modern software dashboard with project task cards, kanban board columns, and colorful team activity charts in a clean UI"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxMGjPbEslXN7xa8gCpWlemKM8cH0tm9c-wq5Izp2PTBikR2agF4vtuuKclxxWRhCA4shC1E7aGsra9ngwu6nxU96VZRAph_7b-f1M2wszYHGJtmFKuc12IS3gqoAGLV9Fy7lr064Kaje5EwQy7x_qXOEicp52PrS27_Ys_8l_34yUt809YMHp6Ovz2vlNFtCeuQjbhHNBBl1amJdJC_DqIICD6AGigiPZdQZsWlEy5VTjs2_o4182Xdzu4KsRXcq-bzAA9Lk5hUE"
+                            />
+                        </div>
+                        <div
+                            class="absolute -top-12 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"
+                        ></div>
+                        <div
+                            class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -z-10"
+                        ></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Features Bento Grid -->
+            <section
+                class="bg-surface-container-low py-24 px-6 rounded-[3rem]"
+                id="features"
+            >
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16 space-y-4">
+                        <h2
+                            class="font-headline text-3xl md:text-5xl font-bold text-on-surface"
+                        >
+                            Minden, amire szüksége van
+                        </h2>
+                        <p
+                            class="text-on-surface-variant max-w-2xl mx-auto text-lg"
+                        >
+                            Intelligens eszközök, amelyekkel a csapat minden
+                            tagja szárnyalhat.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Feature 1 -->
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-transparent hover:border-primary/10 transition-all group"
+                        >
+                            <div
+                                class="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-3xl"
+                                    style="
+                                        font-variation-settings: &quot;FILL&quot;
+                                            1;
+                                    "
+                                    >groups</span
+                                >
+                            </div>
+                            <h3 class="font-headline text-2xl font-bold mb-4">
+                                Csapatmunka
+                            </h3>
+                            <p class="text-on-surface-variant leading-relaxed">
+                                Valós idejű együttműködés, ahol mindenki látja a
+                                közös célt és a saját feladatait.
+                            </p>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-transparent hover:border-primary/10 transition-all group"
+                        >
+                            <div
+                                class="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-3xl"
+                                    style="
+                                        font-variation-settings: &quot;FILL&quot;
+                                            1;
+                                    "
+                                    >smart_toy</span
+                                >
+                            </div>
+                            <h3 class="font-headline text-2xl font-bold mb-4">
+                                Automatizálás
+                            </h3>
+                            <p class="text-on-surface-variant leading-relaxed">
+                                Szabaduljon meg a repetitív feladatoktól egyedi
+                                munkafolyamatokkal és értesítésekkel.
+                            </p>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-transparent hover:border-primary/10 transition-all group"
+                        >
+                            <div
+                                class="w-14 h-14 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-3xl"
+                                    style="
+                                        font-variation-settings: &quot;FILL&quot;
+                                            1;
+                                    "
+                                    >analytics</span
+                                >
+                            </div>
+                            <h3 class="font-headline text-2xl font-bold mb-4">
+                                Riportok
+                            </h3>
+                            <p class="text-on-surface-variant leading-relaxed">
+                                Mélyreható elemzések a haladásról, az
+                                erőforrásokról és a határidők teljesüléséről.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Testimonials -->
+            <section class="py-24 px-6" id="reviews">
+                <div class="max-w-7xl mx-auto">
+                    <div
+                        class="flex flex-col md:flex-row items-end justify-between mb-16 gap-4"
+                    >
+                        <div class="space-y-4">
+                            <h2
+                                class="font-headline text-3xl md:text-5xl font-bold"
+                            >
+                                Vélemények
+                            </h2>
+                            <p class="text-on-surface-variant text-lg">
+                                Akik már az Architecttel építik a jövőt.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Quote 1 -->
+                        <div
+                            class="bg-surface p-10 rounded-2xl border border-surface-container-highest relative"
+                        >
+                            <span
+                                class="material-symbols-outlined text-primary/10 text-8xl absolute top-6 right-6"
+                                >format_quote</span
+                            >
+                            <p
+                                class="text-xl font-medium leading-relaxed mb-8 relative z-10 italic text-on-surface"
+                            >
+                                "Az Architect teljesen megváltoztatta a
+                                fejlesztési ciklusainkat. A kanban nézet és az
+                                automatizálások heti 10 órát spórolnak meg
+                                nekünk."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <img
+                                    class="w-12 h-12 rounded-full object-cover"
+                                    data-alt="Professional portrait of a male tech manager in a clean office environment with natural lighting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG4c_ZAU-OPgEFeeZY-glc-UHyeDGg9KXvurCLelP1gI5bRHYMnTsFXjIYO-yIcBdZhmipmmG-YBKufgGemGwSUaorWzGPKWpi7z8AsCWFQ6DtggZK1NmyeRMpOgFqF3QrQHTeA_lb2a-JYqhhCddVl5HrqdPxvgMMn8zP_6Py_xgfVNb5_shp5RfLvbwvQS7daqtqqI2UL4K1AIKtfY6d3ZiZN6_Jt5ag_kgUyydQuEAc3lYmQ_G4d67lkLGFMU3bu1ttCQlafZo"
+                                />
+                                <div>
+                                    <h4 class="font-bold text-on-surface">
+                                        Kovács Péter
+                                    </h4>
+                                    <p class="text-sm text-on-surface-variant">
+                                        CTO, TechFront Kft.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Quote 2 -->
+                        <div
+                            class="bg-surface p-10 rounded-2xl border border-surface-container-highest relative"
+                        >
+                            <span
+                                class="material-symbols-outlined text-primary/10 text-8xl absolute top-6 right-6"
+                                >format_quote</span
+                            >
+                            <p
+                                class="text-xl font-medium leading-relaxed mb-8 relative z-10 italic text-on-surface"
+                            >
+                                "Végre egy eszköz, ami nem csak funkcionális, de
+                                szép is. A csapatom imádja használni, ami a
+                                hatékonyságunkon is látszik."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <img
+                                    class="w-12 h-12 rounded-full object-cover"
+                                    data-alt="Smiling female project leader with glasses in a modern studio setting with warm professional lighting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhOcEzCGDI4AU3AcOS_HZt1g4yCiGlKefkT9D5pf6XihwkPf3nqLHj4FliU-ACIZXX3mXf5faDlNXF2fOxUDjY3b7ZMuQXgntR3AXqAK7F--QmoNFFFmYV00fMCmyvc2a7UAb8Yv1rQItjYxkue3KqcF2DyDaBtVa-hjaZNvfHBeYYNqEm8Md84Q0hy3MOTRrmQB3eeTFD63zHhPUBIB-a_U8x5AqMX5SBw22ZzcDUSRSwYLeqfapRrS5_9x58eOSPDHsUvLeOscI"
+                                />
+                                <div>
+                                    <h4 class="font-bold text-on-surface">
+                                        Nagy Anna
+                                    </h4>
+                                    <p class="text-sm text-on-surface-variant">
+                                        Project Manager, Creative Solutions
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Pricing -->
+            <section class="py-24 px-6 bg-surface-container" id="pricing">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2
+                            class="font-headline text-3xl md:text-5xl font-bold mb-4"
+                        >
+                            Válassza a siker útját
+                        </h2>
+                        <p class="text-on-surface-variant text-lg">
+                            Egyszerű árazás, rejtett költségek nélkül.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Free -->
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl flex flex-col hover:scale-[1.02] transition-transform"
+                        >
+                            <h3
+                                class="text-lg font-bold text-on-surface-variant uppercase tracking-widest mb-2"
+                            >
+                                Ingyenes
+                            </h3>
+                            <div class="flex items-baseline gap-1 mb-6">
+                                <span class="text-4xl font-bold text-on-surface"
+                                    >0 Ft</span
+                                >
+                                <span class="text-on-surface-variant">/hó</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant mb-8">
+                                Egyéni vállalkozóknak és kis projektekhez.
+                            </p>
+                            <ul class="space-y-4 mb-10 flex-grow">
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>3 Projekt</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>Korlátlan feladat</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>Alap riportok</span>
+                                </li>
+                            </ul>
+                            <button
+                                class="w-full py-4 px-6 rounded-xl border border-outline-variant/30 font-bold hover:bg-surface-container-low transition-colors"
+                            >
+                                Regisztráció
+                            </button>
+                        </div>
+                        <!-- Pro -->
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl flex flex-col border-2 border-primary relative hover:scale-[1.02] transition-transform shadow-xl shadow-primary/5"
+                        >
+                            <div
+                                class="absolute top-0 right-8 -translate-y-1/2 bg-primary text-on-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full"
+                            >
+                                Legnépszerűbb
+                            </div>
+                            <h3
+                                class="text-lg font-bold text-primary uppercase tracking-widest mb-2"
+                            >
+                                Pro
+                            </h3>
+                            <div class="flex items-baseline gap-1 mb-6">
+                                <span class="text-4xl font-bold text-on-surface"
+                                    >3.900 Ft</span
+                                >
+                                <span class="text-on-surface-variant">/hó</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant mb-8">
+                                Növekvő csapatoknak a maximális hatékonyságért.
+                            </p>
+                            <ul class="space-y-4 mb-10 flex-grow">
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>Korlátlan projekt</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>Haladó automatizálások</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>Időmérés és büdzsé</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>Prioritásos ügyfélszolgálat</span>
+                                </li>
+                            </ul>
+                            <button
+                                class="btn-primary-gradient w-full py-4 px-6 rounded-xl text-on-primary font-bold shadow-lg shadow-primary/20 transition-all"
+                            >
+                                Kezdje el most
+                            </button>
+                        </div>
+                        <!-- Enterprise -->
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl flex flex-col hover:scale-[1.02] transition-transform"
+                        >
+                            <h3
+                                class="text-lg font-bold text-on-surface-variant uppercase tracking-widest mb-2"
+                            >
+                                Enterprise
+                            </h3>
+                            <div class="flex items-baseline gap-1 mb-6">
+                                <span class="text-4xl font-bold text-on-surface"
+                                    >Egyedi</span
+                                >
+                            </div>
+                            <p class="text-sm text-on-surface-variant mb-8">
+                                Nagyvállalatoknak, speciális igényekkel.
+                            </p>
+                            <ul class="space-y-4 mb-10 flex-grow">
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>SSO és extra biztonság</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>Egyedi integrációk</span>
+                                </li>
+                                <li class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-xl"
+                                        >check_circle</span
+                                    >
+                                    <span>Dedikált tanácsadó</span>
+                                </li>
+                            </ul>
+                            <button
+                                class="w-full py-4 px-6 rounded-xl border border-outline-variant/30 font-bold hover:bg-surface-container-low transition-colors"
+                            >
+                                Kapcsolatfelvétel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-slate-100 py-12 px-6">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto"
+            >
+                <div class="space-y-4">
+                    <div
+                        class="text-lg font-black text-slate-800 uppercase tracking-tight"
+                    >
+                        Web
+                    </div>
+                    <p
+                        class="font-inter text-xs uppercase tracking-widest text-slate-500"
+                    >
+                        © 2024 Architect PM. Minden jog fenntartva.
+                    </p>
+                </div>
+                <div
+                    class="flex flex-wrap gap-8 md:justify-end font-inter text-xs uppercase tracking-widest"
+                >
+                    <a
+                        class="text-slate-500 hover:text-blue-500 transition-colors underline decoration-blue-500 underline-offset-4"
+                        href="#"
+                        >Adatvédelem</a
+                    >
+                    <a
+                        class="text-slate-500 hover:text-blue-500 transition-colors underline decoration-blue-500 underline-offset-4"
+                        href="#"
+                        >Feltételek</a
+                    >
+                    <a
+                        class="text-slate-500 hover:text-blue-500 transition-colors underline decoration-blue-500 underline-offset-4"
+                        href="#"
+                        >Kapcsolat</a
+                    >
+                    <a
+                        class="text-slate-500 hover:text-blue-500 transition-colors underline decoration-blue-500 underline-offset-4"
+                        href="#"
+                        >Blog</a
+                    >
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
